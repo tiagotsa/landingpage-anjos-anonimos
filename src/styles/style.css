@@ -1,0 +1,921 @@
+/* --- Font Imports (DEVEM VIR PRIMEIRO) --- */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* --- Variáveis CSS Globais --- */
+:root {
+    /* Nova Paleta de Cores */
+    --cor-primaria: #F3475E;
+    --cor-fundo: #FCEAEA;
+    --cor-hover: #D63D57;
+    --cor-texto: #3A3A3A; /* Cinza escuro (quase preto) */
+    --cor-branco-contraste: #FFF9F9;
+    --cor-heading-banner: #000000; /* Preto para headings grandes */
+
+    /* Variáveis de Fonte */
+    --font1: "Archivo Black", sans-serif;
+    --font2: "Inter", sans-serif;
+
+    /* Variáveis de Borda */
+    --border-desktop: 2px solid var(--cor-primaria);
+    --border-mobile: 1px solid var(--cor-primaria);
+}
+
+/* --- Reset e Padrões --- */
+* { padding: 0; margin: 0; box-sizing: border-box; font-family: var(--font2); } /* Usa Inter como padrão */
+html { scroll-behavior: smooth; }
+body { color: var(--cor-texto); background-color: var(--cor-branco-contraste); position: relative; line-height: 1.6; }
+h1, h2, h3 { line-height: 1.3; margin-bottom: 0.75rem; }
+h1 { font-family: var(--font1); text-transform: uppercase; color: var(--cor-heading-banner); }
+h2 { font-family: var(--font1); font-size: 1.8rem; color: var(--cor-texto); }
+h3 { font-weight: bold; font-size: 1.1rem; }
+p { margin-bottom: 1rem; }
+a { color: var(--cor-primaria); text-decoration: none; }
+a:hover { color: var(--cor-hover); text-decoration: underline; }
+ul { list-style: none; padding-left: 0; }
+img { max-width: 100%; height: auto; display: block; } /* Regra global importante */
+section { padding: 3rem 1.5rem; }
+section:nth-child(even) { background-color: var(--cor-fundo); } /* Alterna cor de fundo */
+
+/* ================================== */
+/*            Navbar                  */
+/* ================================== */
+/* ... (código da Navbar permanece igual) ... */
+.navbar {
+    background-color: var(--cor-fundo);
+    width: 100%;
+    color: var(--cor-texto);
+    border: var(--border-desktop);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    transition: all .5s ease;
+    position: relative;
+}
+.navbar .logo img {
+    height: 40px; /* Altura correta do logo */
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+    background-color: transparent;
+}
+.navbar .nav-links {
+    gap: 1.5rem;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
+    overflow: visible;
+    min-width: 0;
+    list-style: none;
+    padding: 0 1rem;
+    margin: 0;
+}
+.navbar .nav-links > li { display: flex; align-items: center; }
+.navbar .nav-links > li > a,
+.navbar .nav-links > li > .dropdowntop { color: var(--cor-texto); font-size: 1.1rem; font-weight: 600; text-decoration: none; cursor: pointer; white-space: nowrap; display: flex; align-items: center; transition: color 0.2s ease, background-color 0.2s ease; }
+.navbar .nav-links .link.dif { padding: .625rem .8rem; border: 2px solid transparent; margin: -2px; border-radius: .625rem; }
+.navbar .nav-links .link.dif:hover { color: var(--cor-primaria); }
+.navbar .nav-links .dropdowntop { z-index: 10; flex-direction: column; justify-content: center; border-radius: .625rem; position: relative; border: 2px solid transparent; margin: -2px; }
+.navbar .nav-links .dropdowntop .item-menu { padding: .625rem .8rem; display: flex; align-items: center; justify-content: center; color: inherit; }
+.navbar .nav-links .dropdowntop .item-menu .material-symbols-outlined { font-size: 1.5em; margin-left: 0.3rem; transition: transform 0.3s ease, color 0.2s ease; vertical-align: middle; line-height: 1; font-variation-settings: 'FILL' 0, 'wght' 500; color: var(--cor-primaria); }
+.navbar .nav-links .dropdowntop:hover .item-menu .material-symbols-outlined { transform: rotate(180deg); }
+.navbar .nav-links .dropdowntop .item-sub-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); z-index: 11; background-color: var(--cor-fundo); border: var(--border-desktop); border-top: none; border-radius: 0 0 .625rem .625rem; padding: 0.75rem; min-width: 180px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: 400; color: var(--cor-texto); }
+.navbar .nav-links .dropdowntop .item-sub-menu .refs { display: flex; flex-direction: column; gap: 0.5rem; }
+.navbar .nav-links .dropdowntop .item-sub-menu .refs a { color: var(--cor-texto); text-decoration: none; padding: 0.4rem 0.8rem; display: block; text-align: left; border-radius: 4px; transition: background-color 0.2s ease, color 0.2s ease; }
+.navbar .nav-links .dropdowntop .item-sub-menu .refs a:hover { background-color: var(--cor-hover); color: var(--cor-branco-contraste); }
+.navbar .nav-links .dropdowntop:hover .item-sub-menu { display: block; }
+.navbar .nav-links .dropdowntop:hover { border-color: var(--cor-primaria); background-color: var(--cor-fundo); }
+.navbar .nav-links .dropdowntop:hover .item-menu { color: var(--cor-primaria); }
+.navbar .nav-actions { display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0; }
+.navbar .btn-doe { font-size: 1.1rem; font-weight: 600; text-decoration: none; white-space: nowrap; padding: 8px 18px; border-radius: 31px; box-shadow: 0 2px 4px 0 rgba(0,0,0,.2); color: var(--cor-branco-contraste); background-color: var(--cor-primaria); cursor: pointer; border: none; transition: background-color 0.2s ease; }
+.navbar .btn-doe:hover { background-color: var(--cor-hover); }
+.navbar .insta img { display: block; height: 24px; width: auto; vertical-align: middle; }
+.navbar .insta:hover img { opacity: 0.7; }
+.navbar .icon { width: auto; display: none; flex-shrink: 0; cursor: pointer; margin-left: auto; line-height: 1; }
+.navbar .icon .material-symbols-outlined { font-size: 2rem; display: block; transition: all .8s ease; color: var(--cor-primaria); font-variation-settings: 'FILL' 0, 'wght' 500; }
+.navbar .icon .menor { display: none; }
+.navbar .icon.active .menor { display: block; }
+.navbar .icon.active .maior { display: none; }
+.menu-side { background: var(--cor-fundo); z-index: 20; position: absolute; top: 100%; right: -2px; width: 50%; display: none; flex-direction: column; padding: 20px; gap: 10px; font-size: 1.2rem; font-weight: 600; border: var(--border-desktop); border-top: none; border-radius: 0 0 0 .625rem; box-shadow: -2px 2px 4px rgba(0,0,0,0.1); color: var(--cor-texto); }
+.menu-side.active { display: flex; }
+.menu-side .link { color: var(--cor-texto); text-decoration: none; padding-bottom: 10px; border-bottom: var(--border-mobile); cursor: pointer; transition: color 0.2s ease; }
+.menu-side .link:hover { color: var(--cor-primaria); }
+.menu-side .dropdownside { display: flex; flex-direction: column; justify-content: flex-start; cursor: pointer; white-space: nowrap; border-bottom: var(--border-mobile); padding-bottom: 10px; color: var(--cor-texto); transition: color 0.2s ease; }
+.menu-side .dropdownside .item-menu { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
+.menu-side .dropdownside:hover .item-menu { color: var(--cor-primaria); }
+.menu-side .dropdownside .item-menu .material-symbols-outlined { font-size: 1.5em; margin-left: .5rem; transition: transform 0.3s ease, color 0.2s ease; vertical-align: middle; line-height: 1; font-variation-settings: 'FILL' 0, 'wght' 500; color: var(--cor-primaria); }
+.menu-side .dropdownside:hover .item-menu .material-symbols-outlined, .menu-side .dropdownside.open .item-menu .material-symbols-outlined { transform: rotate(180deg); }
+.menu-side .dropdownside .item-sub-menu { font-size: 1rem; padding: 0 .25rem 0 1rem; display: none; font-weight: 400; }
+.menu-side .dropdownside.open .item-sub-menu { display: block; }
+.menu-side .dropdownside .item-sub-menu .refs { padding: .125rem 0; display: flex; flex-direction: column; gap: 0.25rem; }
+.menu-side .dropdownside .item-sub-menu .refs a { padding: 0.25rem 0; text-decoration: none; color: var(--cor-texto); transition: color 0.2s ease; }
+.menu-side .dropdownside .item-sub-menu .refs a:hover { color: var(--cor-primaria); }
+.menu-side .btn { margin: 1rem 0 0 0; align-self: center; }
+.menu-side .btn .btn-doe { font-size: 1rem; padding: 8px 16px; } /* Estilo botão menu lateral */
+.menu-side p { color: var(--cor-texto); align-self: center; text-align: center; font-size: 1rem; margin-top: 1rem; }
+
+/* ================================== */
+/*         Listra Rolante             */
+/* ================================== */
+/* ... (código da Listra permanece igual) ... */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.listra {
+    background-color: var(--cor-fundo);    /* Fundo Rosa Claro */
+    color: var(--cor-texto);             /* Texto Cinza Escuro/Preto */
+    height: 3rem;
+    padding: 0.4rem 0;
+    border-top: var(--border-desktop);     /* Borda Vermelha */
+    border-bottom: var(--border-desktop);    /* Borda Vermelha */
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+.listra .slide-track { display: flex; animation: scroll 30s linear infinite; width: fit-content; }
+.listra .group { display: flex; align-items: center; height: 100%; padding: 0 1.5rem; }
+.listra .group p { font-family: var(--font1); text-transform: uppercase; font-size: 1.3rem; margin: 0 0.75rem 0 0; line-height: 1; font-weight: 400; color: inherit; }
+.listra .group .separador-icone { font-size: 1.5rem; color: var(--cor-primaria); /* Ícone Vermelho */ vertical-align: middle; line-height: 1; fill: currentColor; }
+.listra:hover .slide-track { animation-play-state: paused; }
+
+/* ================================== */
+/*         Conteúdo Principal         */
+/* ================================== */
+/* --- Banner "Como Ajudar" --- */
+/* ... (código do Banner permanece igual) ... */
+.banner-container { position: relative; display: flex; align-items: center; justify-content: center; min-height: 60vh; padding: 0; text-align: center; overflow: hidden; }
+.banner-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background-image: url('../image/bannerNoisVoceMobile.c73975ac.jpg'); background-size: cover; background-position: center center; }
+.banner-image::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); }
+.banner-text-container { position: relative; z-index: 2; background-color: rgba(255, 248, 219, 0.9); padding: 2rem 3rem; border-radius: 8px; max-width: 800px; margin: 2rem; border: var(--border-desktop); }
+.banner-text-container h1 { font-size: clamp(3rem, 8vw, 6rem); color: var(--cor-heading-banner); margin-bottom: 1rem; line-height: 1.1; }
+.banner-text-container h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); color: var(--cor-texto); font-family: var(--font2); text-transform: none; font-weight: 600; margin-bottom: 1.5rem; }
+.banner-text-container p { font-size: 1.1rem; color: var(--cor-texto); max-width: 600px; margin-left: auto; margin-right: auto; margin-bottom: 0; }
+
+/* --- Doações Físicas --- */
+.physical-donations .donation-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; max-width: 1200px; margin: 0 auto 3rem auto; }
+.physical-donations .text-column h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1.5rem; }
+.physical-donations .image-column img {
+    /* *** MODIFICADO PARA GARANTIR TAMANHO CORRETO DA IMAGEM *** */
+    width: 100%;
+    height: auto;
+    display: block;
+    /* *** FIM DA MODIFICAÇÃO *** */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Guia de Doações (Doe / Jogue Fora) --- */
+/* ... (código do Guia permanece igual) ... */
+.donation-guidelines {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--cor-fundo);
+    border-radius: 8px;
+}
+.donation-guidelines .box {
+    border: var(--border-mobile); /* <<< BORDA APLICADA AQUI */
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: var(--cor-branco-contraste);
+}
+.donation-guidelines .box h2 { font-family: var(--font1); font-size: 1.6rem; margin-bottom: 1rem; text-transform: uppercase; text-align: center; }
+.donation-guidelines .box.donate-yes h2 { color: var(--cor-primaria); }
+.donation-guidelines .box.donate-no h2 { color: #888; }
+.donation-guidelines .box ul { list-style: none; padding-left: 0; }
+.donation-guidelines .box li { margin-bottom: 0.75rem; padding-left: 0; line-height: 1.5; color: var(--cor-texto); }
+
+/* ================================== */
+/*      Pontos de Coleta             */
+/* ================================== */
+/* ... (código dos Pontos de Coleta permanece igual, imagem do mapa já estava ok) ... */
+.pontos-coleta-container {
+    text-align: center; /* Centraliza o H1 e o mapa */
+    background-color: var(--cor-branco-contraste); /* Fundo padrão */
+    padding: 3rem 1.5rem; /* Espaçamento da seção */
+}
+
+.pontos-coleta-container h1 {
+    margin-bottom: 2rem;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--cor-texto);
+}
+
+.map-container { /* Renomeado de maps-image-container para clareza */
+    max-width: 900px;
+    margin: 0 auto 3rem auto; /* Aumentado margem inferior */
+    border: var(--border-mobile); /* Borda primária fina */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.map-container img {
+    display: block;
+    width: 100%; /* Já estava correto */
+    height: auto; /* Garante proporção */
+}
+
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem; /* Gap aumentado entre cards (vertical e horizontal) */
+    max-width: 1200px;
+    margin: 2.6rem auto 3rem auto; /* Margem inferior aumentada */
+    text-align: left;
+}
+
+.location-item {
+    padding: 1.5rem; /* Padding interno */
+    border: var(--border-mobile); /* Borda vermelha fina */
+    border-radius: 8px; /* Cantos arredondados */
+    background-color: var(--cor-fundo); /* Fundo rosa claro */
+}
+
+.location-item h3 {
+    font-family: var(--font1);
+    font-size: 1.3rem;
+    color: var(--cor-primaria); /* Cor primária */
+    margin-bottom: 0.5rem; /* Margem padrão */
+}
+
+.location-item p {
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+    color: var(--cor-texto);
+}
+
+.location-item span {
+    font-weight: bold;
+    color: var(--cor-texto); /* Cor padrão, mas em negrito */
+}
+
+.pontos-coleta-container .unb-title { /* Título "Universidade de Brasília" */
+    margin-top: 4rem; /* << AUMENTADO espaço antes do título UNB */
+    margin-bottom: 1.5rem; /* Espaço depois do título UNB */
+    font-size: 1.8rem;
+    font-family: var(--font1);
+    text-transform: uppercase;
+    color: var(--cor-texto);
+}
+
+/* ================================== */
+/*      Doações Financeiras         */
+/* ================================== */
+/* ... (código das Doações Financeiras - imagem do PIX tem tamanho fixo, o que é correto) ... */
+.doacoes-financeiras-container {
+    text-align: center;
+    /* Se for seção ímpar, use --cor-branco-contraste, se for par, use --cor-fundo */
+    background-color: var(--cor-branco-contraste);
+    padding: 4rem 1.5rem; /* Mais espaço vertical */
+    border-top: var(--border-mobile); /* Linha separadora sutil */
+}
+
+.doacoes-financeiras-container h1 {
+    margin-bottom: 2.5rem;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--cor-texto);
+}
+
+.donation-methods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 0; /* Sem gap, usaremos bordas */
+    max-width: 1000px; /* Largura máxima */
+    margin: 0 auto 3rem auto; /* Centraliza e adiciona espaço abaixo */
+    border: var(--border-desktop); /* Borda ao redor do grid */
+    border-radius: 8px;
+    overflow: hidden; /* Para o border-radius funcionar */
+    background-color: var(--cor-branco-contraste); /* Fundo interno */
+}
+
+.donation-method {
+    padding: 2rem 2.5rem; /* Padding interno das caixas */
+    text-align: left;
+}
+
+/* Linha vertical entre as colunas no desktop */
+.donation-method.pix {
+    border-right: var(--border-desktop);
+}
+
+.method-text p {
+    margin-bottom: 1.5rem;
+    color: var(--cor-texto);
+    line-height: 1.7;
+}
+
+/* Destaque para Pix e Apoia-se */
+.method-text span {
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+.method-details {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.pix-details img {
+    height: 78px;  /* <<< Tamanho Fixo Intencional */
+    width: auto;
+    margin: 0 auto 0.75rem auto;
+    display: block;
+}
+
+.pix-details p {
+    font-weight: bold;
+    word-break: break-all;
+    color: var(--cor-texto);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+/* Botão genérico */
+.cta-button {
+    display: inline-block;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco-contraste);
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font2);
+    font-size: 1rem;
+}
+.cta-button:hover {
+    background-color: var(--cor-hover);
+    text-decoration: none;
+    color: var(--cor-branco-contraste);
+}
+
+.apoia-se-details .cta-button {
+    margin-top: 1rem;
+}
+
+/* Seção de Transparência */
+.transparency-info {
+    margin-top: 3rem;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+    border: var(--border-mobile);
+    border-radius: 8px;
+    background-color: var(--cor-fundo);
+}
+
+.transparency-info h2 {
+    font-family: var(--font1);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--cor-texto);
+}
+
+.transparency-info p {
+    margin-bottom: 1.5rem;
+}
+
+.transparency-info span {
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+.transparency-info .cta-button.secondary {
+    background-color: transparent;
+    color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
+    margin-top: 1rem;
+}
+.transparency-info .cta-button.secondary:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco-contraste);
+    border-color: var(--cor-primaria);
+}
+
+/* --- Contatos --- */
+/* ... (código dos Contatos permanece igual) ... */
+.contatos-container { text-align: center; padding-bottom: 4rem; }
+.contatos-container h1 { margin-bottom: 1.5rem; font-size: clamp(2.5rem, 6vw, 4rem); }
+.contatos-container p { max-width: 700px; margin: 0 auto 2rem auto; }
+.contatos-container span { font-weight: bold; }
+.contatos-container .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.contatos-container .links .cta-button { background-color: var(--cor-texto); color: var(--cor-branco-contraste); }
+.contatos-container .links .cta-button:hover { background-color: #555; }
+
+/* ================================== */
+/*      Entre na Equipe (ESTILOS RESTAURADOS) */
+/* ================================== */
+
+/* Container principal, se precisar de estilos */
+.entre-equipe-container {
+     /* Pode adicionar padding aqui se for a tag <section> */
+     /* Ex: padding: var(--section-padding-vertical, 3rem) var(--section-padding-horizontal, 1.5rem); */
+     /* Se for um div dentro de uma section, pode não precisar de padding aqui */
+     max-width: 1200px; /* Ou a largura total do seu layout */
+     margin-left: auto;
+     margin-right: auto;
+}
+
+.entre-equipe-container .grid { /* Grid específico desta seção */
+    display: grid;
+    /* Exemplo: 3 colunas em desktop, ajustável */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Espaço entre itens */
+    margin-bottom: 40px; /* Espaço antes da próxima parte (formulário/background) */
+    align-items: start; /* Alinha itens no topo */
+}
+
+/* Estilo para itens de imagem */
+.entre-equipe-container .item.image-desktop img {
+    width: 100%;   /* << GARANTE QUE A IMAGEM OCUPE A COLUNA */
+    height: auto;  /* << MANTÉM PROPORÇÃO */
+    display: block; /* Remove espaços extras */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilo para itens de texto */
+.entre-equipe-container .item.text {
+    padding: 25px; /* Mais padding que o exemplo anterior */
+    background-color: var(--cor-branco-contraste); /* Fundo branco do tema */
+    border-radius: 8px;
+    border: 1px solid #eee; /* Borda bem suave */
+}
+
+.entre-equipe-container .item.text h1,
+.entre-equipe-container .item.text h2 {
+    font-family: var(--font1); /* Fonte Archivo Black */
+    color: var(--cor-texto); /* Cor padrão de texto */
+    margin-bottom: 1rem; /* Espaçamento padrão */
+}
+.entre-equipe-container .item.text h1 {
+    color: var(--cor-heading-banner); /* Cor preta para H1 principal */
+    font-size: clamp(2rem, 5vw, 2.8rem); /* Ajuste o tamanho */
+}
+.entre-equipe-container .item.text h2 {
+     font-size: clamp(1.5rem, 4vw, 1.8rem); /* Ajuste o tamanho */
+}
+
+.entre-equipe-container .item.text p {
+    font-family: var(--font2); /* Fonte Inter */
+    color: var(--cor-texto);
+    line-height: 1.7; /* Melhora leitura */
+    margin-bottom: 1rem; /* Espaçamento padrão */
+}
+.entre-equipe-container .item.text p:last-child {
+    margin-bottom: 0; /* Remove margem do último parágrafo */
+}
+
+/* Estilos para a parte do formulário/background (se existir) */
+.entre-equipe-container .background {
+    position: relative;
+    padding: 60px 20px;
+    background-color: var(--cor-fundo); /* Usa cor de fundo do tema */
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
+    border: var(--border-mobile); /* Adiciona borda sutil */
+}
+
+.entre-equipe-container .image-back { /* Imagem decorativa de fundo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.08; /* Mais sutil */
+    pointer-events: none;
+}
+
+.entre-equipe-container .image-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.entre-equipe-container .form { /* Conteúdo sobre a imagem de fundo */
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.entre-equipe-container .form p {
+    margin-bottom: 25px;
+    font-size: 1.1em;
+    color: var(--cor-texto);
+}
+
+.entre-equipe-container .form-button { /* Estilo do botão/link do formulário */
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--cor-primaria); /* Cor primária do tema */
+    color: var(--cor-branco-contraste); /* Branco contraste */
+    text-decoration: none;
+    font-weight: bold;
+    font-family: var(--font2);
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+}
+
+.entre-equipe-container .form-button:hover,
+.entre-equipe-container .form-button:focus {
+    background-color: var(--cor-hover); /* Cor hover do tema */
+    color: var(--cor-branco-contraste);
+    transform: translateY(-2px);
+    outline: none;
+    text-decoration: none;
+}
+
+/* ================================== */
+/*   Divulgue Nosso Projeto          */
+/* ================================== */
+/* ... (código do Divulgue Nosso Projeto permanece igual ao da última correção) ... */
+.divulgue-projeto-container {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    display: block;
+    max-width: 850px;
+    width: 90%;
+    margin: 3rem auto;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border: var(--border-desktop);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.divulgue-projeto-container h1 {
+    font-family: var(--font1);
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    margin-bottom: 1.5rem;
+    font-weight: 900;
+    color: var(--cor-heading-banner);
+}
+.divulgue-projeto-container p {
+    font-family: var(--font2);
+    color: var(--cor-texto);
+    margin-bottom: 2rem;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+.divulgue-projeto-container .highlight {
+    font-weight: bold;
+}
+.divulgue-projeto-container .instagram-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: inline;
+    color: var(--cor-primaria);
+    font-family: var(--font2);
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+.divulgue-projeto-container .instagram-button:hover,
+.divulgue-projeto-container .instagram-button:focus {
+    color: var(--cor-hover);
+    text-decoration: underline;
+    transform: none;
+    outline: none;
+}
+
+/* ================================== */
+/*         Responsividade Geral       */
+/* ================================== */
+
+/* Media Query para Listra */
+@media (max-width: 48rem) {
+    .listra { height: 2.5rem; border: var(--border-mobile); }
+    .listra .group p { font-size: 1rem; margin-right: 0.5rem; }
+    .listra .group .separador-icone { font-size: 1.2rem; }
+    .listra .slide-track { animation-duration: 20s; }
+
+    /* --- Responsividade para Pontos de Coleta --- */
+    .pontos-coleta-container { padding: 2rem 1rem; }
+    .map-container { margin-bottom: 2rem; }
+    .locations-grid { grid-template-columns: 1fr; gap: 1.5rem; margin: 1.5rem auto 2rem auto; }
+    .location-item { padding: 1rem; }
+    .location-item h3 { font-size: 1.2rem; }
+    .location-item p { font-size: 0.9rem; }
+    .pontos-coleta-container .unb-title { font-size: 1.5rem; margin-top: 3rem; }
+
+    /* --- Responsividade para Doações Financeiras --- */
+    .doacoes-financeiras-container { padding: 2.5rem 1rem; }
+    .doacoes-financeiras-container h1 { font-size: 2rem; }
+    .transparency-info h2 { font-size: 1.5rem; }
+    .pix-details p { font-size: 1rem; }
+
+    /* Ajustes gerais para conteúdo em telas menores */
+    section { padding: 2rem 1rem; }
+    /* Ajuste H1/H2 globais com cuidado para não sobrescrever os específicos */
+    /* h1 { font-size: 2.5rem; } */
+    /* h2 { font-size: 1.5rem; } */
+    .banner-text-container { padding: 1.5rem; margin: 1rem; }
+    .banner-text-container p { font-size: 1rem; }
+    .physical-donations .donation-content { grid-template-columns: 1fr; }
+    .physical-donations .image-column { order: -1; margin-bottom: 2rem; }
+    .donation-guidelines { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; margin: 2rem auto; }
+    .donation-guidelines .box h2 { font-size: 1.4rem; }
+    .donation-guidelines .box li { font-size: 0.9rem; }
+    .finance-grid { grid-template-columns: 1fr; padding: 1.5rem; }
+    .contatos-container .links { flex-direction: column; gap: 0.75rem; align-items: center;}
+    .contatos-container .links .cta-button { width: 80%; max-width: 300px; }
+}
+
+/* Media Queries da Navbar */
+@media (max-width: 71rem) {
+    .navbar { gap: .625rem; }
+    .navbar .logo img { height: 30px; }
+    .navbar .nav-links { display: none; }
+    .navbar .nav-actions { margin-left: auto; }
+    .navbar .icon { display: block; margin-left: 1rem; }
+}
+@media (max-width: 48rem) { /* Combina com a media query geral de 48rem */
+    .navbar { border: var(--border-mobile); padding: 0.75rem 1rem; }
+    .navbar .nav-actions .btn-doe { font-size: .75rem; padding: .5rem .75rem; }
+    .menu-side { border: var(--border-mobile); border-top: none; border-radius: 0; right: -1px; width: 70%; }
+    .menu-side .btn { margin: 1rem 0; align-self: center; }
+}
+
+/* Media Query Geral para Tablet (768px) */
+@media (max-width: 768px) {
+    /* --- Responsividade Doações Financeiras (Tablet) --- */
+     .donation-methods-grid {
+        grid-template-columns: 1fr;
+        border-right: none;
+    }
+    .donation-method.pix {
+        border-right: none;
+        border-bottom: var(--border-desktop); /* Mantém borda mais grossa entre eles */
+    }
+    .donation-method { padding: 1.5rem; }
+    .transparency-info { padding: 1.5rem; margin-top: 2rem; }
+
+    /* --- Responsividade Entre na Equipe (Tablet) --- */
+    .entre-equipe-container .grid {
+        grid-template-columns: 1fr; /* Empilha para 1 coluna */
+        gap: 20px; /* Reduz gap */
+    }
+    .entre-equipe-container .item.image-desktop {
+         /* display: none; /* Descomente se quiser esconder imagens aqui */
+    }
+    .entre-equipe-container .background { padding: 40px 15px; }
+    .entre-equipe-container .form-button { padding: 10px 25px; font-size: 0.95em;}
+
+     /* --- Responsividade Divulgue Projeto (Tablet) --- */
+     /* (Regras já inclusas no bloco específico do Divulgue) */
+     /* .divulgue-projeto-container { ... } */
+}
+
+/* Media Query para Telas Pequenas (38rem / ~600px) */
+@media (max-width: 38rem) {
+    .navbar { padding: 0.75rem; gap: 0.5rem; }
+    .navbar .logo img { height: 25px; }
+    .navbar .insta img { height: 22px; }
+    .navbar .icon .material-symbols-outlined { font-size: 1.6rem; }
+    .navbar .nav-actions .btn-doe { display: none; }
+    .navbar .nav-actions { gap: 0; }
+    .menu-side { width: calc(100% + 2px); right: -1px; }
+
+    .banner-text-container h1 { font-size: 2rem; }
+    .banner-text-container h2 { font-size: 1.2rem; }
+}
+
+/* ================================== */
+/*         JavaScript Classes         */
+/* ================================== */
+.menu-side.active { display: flex; }
+.navbar .icon.active .menor { display: block; }
+.navbar .icon.active .maior { display: none; }
+.menu-side .dropdownside.open .item-sub-menu { display: block; }
+.menu-side .dropdownside.open .item-menu .material-symbols-outlined { transform: rotate(180deg); }
+
+/* ================================== */
+/*      (FIM DO ARQUIVO CSS)          */
+/* ================================== */
+
+/* ================================== */
+/*            Contatos                */
+/* ================================== */
+
+.contatos-container {
+    text-align: center; /* Centraliza H1, P e o div .links */
+    padding: 3rem 1.5rem 4rem 1.5rem; /* Padding padrão + mais espaço inferior */
+    /* background-color: var(--cor-branco-contraste); /* Define um fundo se necessário (ímpar/par) */
+    /* Se for uma seção de cor alternada, use: */
+    /* background-color: var(--cor-fundo); */
+}
+
+.contatos-container h1 {
+    /* Usa o estilo global de H1 (Archivo Black, uppercase, preto) */
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* Ajuste o tamanho se precisar */
+    margin-bottom: 1.5rem; /* Espaço abaixo do título */
+}
+
+.contatos-container p {
+    /* Usa o estilo global de P (Inter, --cor-texto) */
+    max-width: 700px; /* Limita a largura para leitura */
+    margin-left: auto;  /* Centraliza o bloco de parágrafo */
+    margin-right: auto; /* Centraliza o bloco de parágrafo */
+    margin-bottom: 2.5rem; /* Mais espaço antes dos botões */
+    line-height: 1.7;
+}
+
+.contatos-container p .highlight { /* Estilo para o span de destaque */
+    font-weight: bold; /* Negrito */
+    /* A cor será a mesma do parágrafo (--cor-texto) */
+}
+
+.contatos-container .links {
+    display: flex;          /* Organiza os botões em linha */
+    flex-wrap: wrap;        /* Permite que quebrem a linha em telas menores */
+    justify-content: center;/* Centraliza os botões horizontalmente */
+    gap: 1rem 1.5rem;       /* Espaço vertical e horizontal entre os botões */
+}
+
+/* Estilo específico para os botões de contato, herdando .cta-button */
+.contatos-container .contact-button {
+    /* Pode adicionar estilos específicos aqui se quiser diferenciar
+       dos outros .cta-button, por exemplo: */
+    background-color: var(--cor-texto); /* Fundo cinza escuro/preto */
+    color: var(--cor-branco-contraste); /* Texto branco */
+    min-width: 150px; /* Largura mínima para consistência */
+    text-align: center; /* Garante texto centralizado no botão */
+}
+
+.contatos-container .contact-button:hover {
+    background-color: #555; /* Um cinza um pouco mais claro no hover */
+    color: var(--cor-branco-contraste); /* Mantém texto branco */
+    text-decoration: none; /* Remove sublinhado no hover */
+}
+
+/* --- Responsividade para Contatos (opcional, já coberto em parte pelas gerais) --- */
+@media (max-width: 48rem) {
+    .contatos-container {
+        padding: 2.5rem 1rem 3rem 1rem; /* Ajusta padding */
+    }
+    .contatos-container h1 {
+        font-size: clamp(2rem, 7vw, 2.8rem);
+    }
+     .contatos-container p {
+         margin-bottom: 2rem;
+     }
+    .contatos-container .links {
+        /* Poderia mudar para coluna se quisesse, mas wrap geralmente funciona bem */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        gap: 1rem; /* Reduz o gap */
+    }
+    .contatos-container .contact-button {
+        width: 70%; /* Faz os botões ocuparem mais largura */
+        max-width: 280px; /* Limita o tamanho máximo */
+        padding: 0.7rem 1rem; /* Ajusta padding interno */
+    }
+    /* ================================== */
+/*            Footer                  */
+/* ================================== */
+
+.site-footer {
+    /* ... outros estilos do footer ... */
+    background-color: var(--cor-fundo);
+    border-top: var(--border-desktop);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+}
+.footer-image img {
+    /* >>>>>>>>>> ESTA É A REGRA IMPORTANTE <<<<<<<<<< */
+    height: 35px;  /* <<< DEFINA A ALTURA DESEJADA AQUI */
+    width: auto;   /* Deixa a largura ajustar proporcionalmente */
+    display: block; /* Comportamento padrão para imagens */
+    flex-shrink: 0; 
+
+    .footer-text {
+        /* ... estilos do texto ... */
+        text-align: center;
+        flex-grow: 1;
+        padding: 0 1rem;
+        max-width
+
+.footer-text p {
+    margin-bottom: 0.3rem; /* Espaço pequeno entre as linhas de texto */
+    color: var(--cor-texto);
+    font-size: 0.9rem; /* Tamanho um pouco menor para o texto do rodapé */
+    line-height: 1.4;
+}
+
+.footer-text p:first-child { /* Estilo para a citação */
+    font-style: italic;
+}
+
+.footer-text p.cnpj { /* Estilo para o CNPJ */
+    font-size: 0.8rem; /* Ainda menor */
+    opacity: 0.8;     /* Um pouco mais apagado */
+    margin-bottom: 0; /* Remove margem inferior do CNPJ */
+}
+
+.footer-right {
+   flex-shrink: 0; /* Impede que o botão encolha */
+}
+
+/* Estilo do botão no rodapé (herdando .cta-button) */
+.footer-donate-button {
+    /* Herda a maioria dos estilos de .cta-button (fundo, cor, etc) */
+    padding: 0.6rem 1.2rem; /* Padding ligeiramente menor que botões padrão */
+    font-size: 0.95rem;    /* Fonte ligeiramente menor */
+    /* Garante que use as cores corretas se o .cta-button geral for diferente */
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco-contraste);
+    border: none; /* Garante que não haja borda herdada */
+}
+.footer-donate-button:hover {
+    background-color: var(--cor-hover);
+    color: var(--cor-branco-contraste);
+    text-decoration: none;
+}
+
+
+/* --- Responsividade do Footer --- */
+/* ================================== */
+/*            Footer                  */
+/* ================================== */
+
+.site-footer {
+    /* ... outros estilos do footer ... */
+    background-color: var(--cor-fundo);
+    border-top: var(--border-desktop);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+}
+
+.footer-image img {
+    /* >>>>>>>>>> ESTA É A REGRA IMPORTANTE <<<<<<<<<< */
+    height: 35px;  /* <<< DEFINA A ALTURA DESEJADA AQUI */
+    width: auto;   /* Deixa a largura ajustar proporcionalmente */
+    display: block; /* Comportamento padrão para imagens */
+    flex-shrink: 0; /* Evita que encolha no flex container */
+}
+
+.footer-text {
+    /* ... estilos do texto ... */
+    text-align: center;
+    flex-grow: 1;
+    padding: 0 1rem;
+    max-width: 600px;
+}
+
+/* ... restante dos estilos do footer ... */
+
+@media (max-width: 768px) {
+    .site-footer {
+         /* ... estilos responsivos do footer ... */
+         flex-direction: column;
+         justify-content: center;
+         text-align: center;
+         padding: 1.5rem 1rem;
+         gap: 1.5rem;
+         border-top: var(--border-mobile);
+    }
+    /* A regra .footer-image img com height: 35px continuará valendo aqui */
+}
+
+    .footer-text {
+        padding: 0; /* Remove padding lateral quando empilhado */
+        order: 2;  /* Ordem: Logo (1 implícito), Texto (2), Botão (3) */
+        max-width: 100%; /* Permite ocupar toda a largura */
+    }
+
+    .footer-right {
+        order: 3; /* Botão fica por último */
+    }
+
+    /* A logo (.footer-image) já será a primeira por padrão (order: 0) */
+}
+}
+}

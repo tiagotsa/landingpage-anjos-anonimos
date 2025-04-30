@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar com Dropdown</title>
+    <!-- Link ÚNICO para o CSS -->
+    <link rel="stylesheet" href="src/styles/style.css">
+
+    <!-- Link para Google Material Symbols (para as setas ▼) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+
+<nav class="navbar">
+    <!-- 1. Logo -->
+    <a href="/" class="logo">
+        <img src="src/image/logo_04.png" alt="Logo Anjo ONG">
+    </a>
+
+    <!-- 2. Links de Navegação -->
+    <ul class="nav-links">
+        <li><a href="/" class="link dif">Home</a></li>
+        <li>
+            <div class="dropdowntop">
+                <span class="item-menu">Sobre nós<span class="material-symbols-outlined">expand_more</span></span>
+                <div class="item-sub-menu"><div class="refs"><a href="/link-sobre-1">História</a><a href="/link-sobre-2">Equipe</a></div></div>
+            </div>
+        </li>
+        <li>
+            <div class="dropdowntop">
+                <span class="item-menu">Nós e você<span class="material-symbols-outlined">expand_more</span></span>
+                <div class="item-sub-menu"><div class="refs"><a href="/ajudar.html">Como ajudar</a><a href="contatos.html">Contatos</a></div></div>
+            </div>
+        </li>
+        <li>
+            <div class="dropdowntop">
+                <span class="item-menu">Nós e a sociedade<span class="material-symbols-outlined">expand_more</span></span>
+                <div class="item-sub-menu"><div class="refs"><a href="/link-sociedade-1">Projetos</a><a href="/link-sociedade-2">Impacto</a></div></div>
+            </div>
+        </li>
+        <li><a href="/blog" class="link dif">Blog</a></li>
+        <li><a href="/noisvoce#doacoesfinanceiras" class="btn-doe">Doe agora</a></li>
+    </ul>
+
+    <!-- 3. Ações da Navbar (Botão + Instagram) -->
+    <div class="nav-actions">
+        
+        <a href="https://www.instagram.com/ongdarua/" target="_blank" rel="noopener noreferrer" class="insta">
+            <img src="src/image/instagram.png" alt="Insta">
+        </a>
+    </div>
+
+     <!-- ÍCONE HAMBURGUER REMOVIDO -->
+
+     <!-- Menu Lateral (pode ser removido se não for mais usado) -->
+     <!-- <div class="menu-side"> ... </div> -->
+
+</nav>
+<!-- <script src="script.js"></script> -->
+  <!-- Menu Lateral (Inicialmente escondido) -->
+  <div class="menu-side" id="menu-lateral">
+   
+  </div>
+
+<!-- ==================== Conteúdo Principal ==================== -->
+<main class="page-content" id="noisvoce"> <!-- ID da div original -->
+
+  <!-- Seção Banner "Como Ajudar" -->
+  <section class="banner-container" id="comoajudar">
+      <div class="banner-image" style="background-image: url('src/image/bannerNoisVoceMobile.png');">
+          <!-- A imagem real está no CSS/style -->
+      </div>
+      <div class="banner-text-container">
+          <h1>Como ajudar</h1>
+          <h2>Pequenas doações, grandes impactos!</h2>
+          <p>Vivemos de doações físicas, financeiras e parcerias. Cada doação faz uma grande diferença, seja uma peça de roupa ou 5 reais, auxiliam a vida de alguém 🙌</p>
+      </div>
+  </section>
+
+  <!-- Seção Doações Físicas -->
+  <section class="donations-container physical-donations">
+       <div class="donation-content">
+           <div class="text-column">
+              <h1>Doações Físicas</h1>
+              <p>Recebemos todo tipo de doação, mas precisa estar em bom estado. Se você tem algo que não te serve mais, ficaremos felizes em entregar para quem precisa. Mas lembre-se, outra pessoa irá utilizar 😉</p>
+           </div>
+           <div class="image-column">
+            <!-- Idealmente, usar a tag <picture> para imagens responsivas -->
+            <img src="src/image/DoacoesFisicas.png" alt="Pessoas organizando doações de roupas em um carro">
+       </div>
+   </div>
+
+       <!-- ... (Fim da tag </nav>) ... -->
+
+    <!-- ==================== Listra Rolante ==================== -->
+    <section class="listra">
+        <div class="slide-track">
+            <!-- Grupo 1 (Repetido para Loop) -->
+            <div class="group">
+                <p>comunidade</p>
+                <span class="material-symbols-outlined separador-icone">diversity_3</span> <!-- Ícone do Google -->
+            </div>
+            <div class="group">
+                <p>humanidade</p>
+                 <span class="material-symbols-outlined separador-icone">diversity_3</span>
+            </div>
+            <div class="group">
+                <p>cidadania</p>
+                 <span class="material-symbols-outlined separador-icone">diversity_3</span>
+            </div>
+            <div class="group">
+                <p>ação social</p>
+                 <span class="material-symbols-outlined separador-icone">diversity_3</span>
+            </div>
+            <!-- Grupo 2 (Repetição do Grupo 1) -->
+             <div class="group">
+                <p>comunidade</p>
+                <span class="material-symbols-outlined separador-icone">diversity_3</span>
+            </div>
+            <div class="group">
+                <p>humanidade</p>
+                 <span class="material-symbols-outlined separador-icone">diversity_3</span>
+            </div>
+            <div class="group">
+                <p>cidadania</p>
+                 <span class="material-symbols-outlined separador-icone">diversity_3</span>
+            </div>
+            <div class="group">
+                <p>ação social</p>
+                 <span class="material-symbols-outlined separador-icone">diversity_3</span>
+            </div>
+             <!-- Adicione mais repetições se necessário para preencher a tela -->
+        </div>
+    </section>
+    <!-- ========================================================= -->
+
+
+    <!-- ==================== Conteúdo Principal ==================== -->
+    <main class="page-content" id="noisvoce">
+        <!-- ... (Resto do seu conteúdo <section>, etc.) ... -->
+    </main>
+
+    <!-- ... (Footer, Scripts) ... -->
+</body>
+
+    <!-- ==================== Guia de Doações ==================== -->
+    <section class="donation-guidelines">
+
+        <div class="box donate-yes">
+            <h2>doe ✔</h2>
+            <ul>
+                <li>Roupa que não serve mais ou enjoou</li>
+                <li>Sapato que não usa mais ou enjoou</li>
+                <li>Acessórios que não estão mais no seu estilo</li>
+                <li>Enxoval do bebê que virou criança</li>
+                <li>Brinquedos da criança que já cresceu</li>
+                <li>Livros que já leu</li>
+                <li>Itens de cozinha em bom estado</li>
+            </ul>
+        </div>
+
+        <div class="box donate-yes">
+            <h2>jogue fora ✖</h2>
+            <ul>
+                <li>Roupa rasgada ou suja</li>
+                <li>Sapato furado</li>
+                <li>Acessórios e bolsas rasgados</li>
+                <li>Enxoval do bebê em mal uso</li>
+                <li>Brinquedos quebrados</li>
+                <li>Livros rasgados</li>
+                <li>Itens de cozinha em mau estado</li>
+            </ul>
+        </div>
+
+    </section>
+    <!-- ========================================================= -->
+</html>

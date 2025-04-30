@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar com Dropdown</title>
+    <!-- Link ÚNICO para o CSS -->
+    <link rel="stylesheet" href="src/styles/style.css">
+
+    <!-- Link para Google Material Symbols (para as setas ▼) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+
+<nav class="navbar">
+    <!-- 1. Logo -->
+    <a href="/" class="logo">
+        <img src="src/image/logo_04.png" alt="Logo Anjo ONG">
+    </a>
+
+    <!-- 2. Links de Navegação -->
+    <ul class="nav-links">
+        <li><a href="/" class="link dif">Home</a></li>
+        <li>
+            <div class="dropdowntop">
+                <span class="item-menu">Sobre nós<span class="material-symbols-outlined">expand_more</span></span>
+                <div class="item-sub-menu"><div class="refs"><a href="/link-sobre-1">História</a><a href="/link-sobre-2">Equipe</a></div></div>
+            </div>
+        </li>
+        <li>
+            <div class="dropdowntop">
+                <span class="item-menu">Nós e você<span class="material-symbols-outlined">expand_more</span></span>
+                <div class="item-sub-menu"><div class="refs"><a href="/ajudar.html">Como ajudar</a><a href="contatos.html">Contatos</a></div></div>
+            </div>
+        </li>
+        <li>
+            <div class="dropdowntop">
+                <span class="item-menu">Nós e a sociedade<span class="material-symbols-outlined">expand_more</span></span>
+                <div class="item-sub-menu"><div class="refs"><a href="/link-sociedade-1">Projetos</a><a href="/link-sociedade-2">Impacto</a></div></div>
+            </div>
+        </li>
+        <li><a href="/blog" class="link dif">Blog</a></li>
+        <li><a href="/noisvoce#doacoesfinanceiras" class="btn-doe">Doe agora</a></li>
+    </ul>
+
+    <!-- 3. Ações da Navbar (Botão + Instagram) -->
+    <div class="nav-actions">
+        
+        <a href="https://www.instagram.com/ongdarua/" target="_blank" rel="noopener noreferrer" class="insta">
+            <img src="src/image/instagram.png" alt="Insta">
+        </a>
+    </div>
+
+     <!-- ÍCONE HAMBURGUER REMOVIDO -->
+
+     <!-- Menu Lateral (pode ser removido se não for mais usado) -->
+     <!-- <div class="menu-side"> ... </div> -->
+
+</nav>
+<!-- <script src="script.js"></script> -->
+</body>
+</html>
