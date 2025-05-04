@@ -3,7 +3,7 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - main  # ou master, dependendo da sua branch principal
+      - main # ou master
 
 jobs:
   deploy:
@@ -20,6 +20,19 @@ jobs:
           source: "."
           target: "/root/anjos-anonimos"
 
+      # --- ADICIONAR ESTE PASSO DE DEBUG ---
+      - name: Verify docker-compose.yml on VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            echo "--- Verificando /root/anjos-anonimos/docker-compose.yml ---"
+            cat /root/anjos-anonimos/docker-compose.yml
+            echo "--- Fim da verificação ---"
+      # --- FIM DO PASSO DE DEBUG ---
+
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
         with:
@@ -29,5 +42,5 @@ jobs:
           script: |
             cd /root/anjos-anonimos
             docker-compose down --remove-orphans
-            docker system prune -f
+            docker system prune -f # Ainda acho isso um pouco agressivo aqui
             docker-compose up -d --build
