@@ -28,5 +28,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /root/anjos-anonimos
-            docker-compose pull
-            docker-compose up -d --force-recreate
+            docker-compose down --remove-orphans
+            docker system prune -f
+            docker-compose up -d --build
