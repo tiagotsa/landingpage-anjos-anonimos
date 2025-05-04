@@ -17,10 +17,10 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "."
-          target: "/root/anjos-anonimos"
+          source: "." # Copia todo o conteúdo do repositório
+          target: "/root/anjos-anonimos" # Para este diretório no servidor
 
-      # --- ADICIONAR ESTE PASSO DE DEBUG ---
+      # --- PASSO DE DEBUG ---
       - name: Verify docker-compose.yml on VPS
         uses: appleboy/ssh-action@master
         with:
@@ -29,7 +29,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "--- Verificando /root/anjos-anonimos/docker-compose.yml ---"
-            cat /root/anjos-anonimos/docker-compose.yml
+            cat /root/anjos-anonimos/docker-compose.yml # Mostra o conteúdo do compose no servidor
             echo "--- Fim da verificação ---"
       # --- FIM DO PASSO DE DEBUG ---
 
@@ -40,7 +40,7 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /root/anjos-anonimos
-            docker-compose down --remove-orphans
-            docker system prune -f # Ainda acho isso um pouco agressivo aqui
-            docker-compose up -d --build
+            cd /root/anjos-anonimos # Entra no diretório correto
+            docker-compose down --remove-orphans # Para e remove containers antigos deste compose
+            docker system prune -f # Limpa recursos não usados do Docker (containers parados, etc)
+            docker-compose up -d --build # Constrói a imagem e sobe os containers em background
