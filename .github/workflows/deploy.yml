@@ -20,8 +20,8 @@ jobs:
           source: "." # Copia todo o conteúdo do repositório
           target: "/root/anjos-anonimos" # Para este diretório no servidor
 
-      # --- PASSO DE DEBUG ---
-      - name: Verify docker-compose.yml on VPS
+      # --- PASSO DE DEBUG ATUALIZADO ---
+      - name: Verify files on VPS  # Nome do passo atualizado
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -29,8 +29,12 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "--- Verificando /root/anjos-anonimos/docker-compose.yml ---"
-            cat /root/anjos-anonimos/docker-compose.yml # Mostra o conteúdo do compose no servidor
-            echo "--- Fim da verificação ---"
+            cat /root/anjos-anonimos/docker-compose.yml
+            echo "--- Fim da verificação docker-compose.yml ---"
+            echo "-------------------------------------------------" # Linha separadora
+            echo "--- Verificando /root/anjos-anonimos/nginx.conf ---" # Título adicionado
+            cat /root/anjos-anonimos/nginx.conf # <<< COMANDO ADICIONADO PARA VERIFICAR NGINX.CONF
+            echo "--- Fim da verificação nginx.conf ---" # Linha final adicionada
       # --- FIM DO PASSO DE DEBUG ---
 
       - name: Deploy to VPS
